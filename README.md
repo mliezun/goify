@@ -1,16 +1,16 @@
-# goify
+# goesque
 
-[![Tests](https://github.com/mliezun/goify/actions/workflows/tests.yml/badge.svg)](https://github.com/mliezun/goify/actions/workflows/tests.yml)
+[![Tests](https://github.com/mliezun/goesque/actions/workflows/tests.yml/badge.svg)](https://github.com/mliezun/goesque/actions/workflows/tests.yml)
 
-`goify` patches Python function objects with a `go()` method backed by
+`goesque` patches Python function objects with a `go()` method backed by
 `gevent.spawn`, so regular functions can be launched in a Go-like style.
 
 ## Quick example
 
 ```python
-import goify
+import goesque
 
-goify.patch_all()
+goesque.patch_all()
 
 def side_effect():
     print("Side effect!")
@@ -21,7 +21,7 @@ side_effect.go()
 
 ## How it works
 
-`goify.patch_all()` does two things:
+`goesque.patch_all()` does two things:
 
 1. Calls `gevent.monkey.patch_all()` so standard library I/O becomes cooperative.
 2. Patches `types.FunctionType` so every Python function gains a `go()` method.

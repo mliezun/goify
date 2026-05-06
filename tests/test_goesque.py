@@ -2,11 +2,11 @@ import time
 
 import gevent
 
-import goify
+import goesque
 
 
 def test_function_has_go_after_patch_all():
-    goify.patch_all()
+    goesque.patch_all()
 
     def f():
         return 123
@@ -16,7 +16,7 @@ def test_function_has_go_after_patch_all():
 
 
 def test_functions_execute_concurrently():
-    goify.patch_all()
+    goesque.patch_all()
 
     order = []
 
@@ -37,7 +37,7 @@ def test_functions_execute_concurrently():
 
 
 def test_go_yields_once_for_new_greenlet():
-    goify.patch_all()
+    goesque.patch_all()
     marker = []
 
     def task():
