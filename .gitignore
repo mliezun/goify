@@ -12,6 +12,7 @@ dist/
 .eggs/
 *.egg
 pip-wheel-metadata/
+*.so
 
 # Virtual environments
 .venv/
