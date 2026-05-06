@@ -1,5 +1,7 @@
 # goify
 
+[![Tests](https://github.com/mliezun/goify/actions/workflows/tests.yml/badge.svg)](https://github.com/mliezun/goify/actions/workflows/tests.yml)
+
 `goify` patches Python function objects with a `go()` method backed by
 `gevent.spawn`, so regular functions can be launched in a Go-like style.
 
