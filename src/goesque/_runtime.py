@@ -18,8 +18,8 @@ def _mutable_type_dict(tp):
     return proxy_obj.mapping
 
 
-def _patch_function_type():
-    type_dict = _mutable_type_dict(types.FunctionType)
+def _install_go_on_type(tp):
+    type_dict = _mutable_type_dict(tp)
     if "go" in type_dict:
         return
 
@@ -35,10 +35,11 @@ def _patch_function_type():
     py_type_modified = ctypes.pythonapi.PyType_Modified
     py_type_modified.argtypes = [ctypes.py_object]
     py_type_modified.restype = None
-    py_type_modified(types.FunctionType)
+    py_type_modified(tp)
 
 
 def patch_all(**kwargs):
-    """Patch gevent monkey patches and add function.go()."""
+    """Patch gevent monkey patches and add go() to functions/methods."""
     monkey.patch_all(**kwargs)
-    _patch_function_type()
+    _install_go_on_type(types.FunctionType)
+    _install_go_on_type(types.MethodType)
